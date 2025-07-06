@@ -1,12 +1,23 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Progress } from "@/components/ui/progress";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function Home() {
   return (
-    <div className="text-bold text-2xl">
-      <p className="text-rose-500 p-2">
-        Hello World! Initial Setup of the project with tailwind and shadcn
-      </p>
-      <Button> Hi </Button>
+    <div className="flex flex-col gap-y-4 p-4">
+      <div>
+        <Button variant={"elevated"}>I am a Button</Button>
+      </div>
+      <div>
+        <Input placeholder="I am an input" />
+      </div>
+      <div>
+        <Progress value={50} />
+      </div>
+      <div>
+        <Textarea placeholder="I am a text area" />
+      </div>
     </div>
   );
 }
