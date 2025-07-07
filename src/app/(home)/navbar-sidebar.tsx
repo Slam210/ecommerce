@@ -4,8 +4,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
--import { ScrollArea } from "@radix-ui/react-scroll-area";
-+import { ScrollArea } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
 
 interface NavbarItem {
@@ -31,7 +30,7 @@ export const NavbarSidebar = ({ items, open, onOpenChange }: Props) => {
             <Link
               key={item.href}
               href={item.href}
-              className="w-full text-left p-4 hover:bg-black hover:text-white flex item-center text-base font-medium"
+              className="w-full text-left p-4 hover:bg-black hover:text-white flex items-center text-base font-medium"
               onClick={() => onOpenChange(false)}
             >
               {item.children}
@@ -40,14 +39,14 @@ export const NavbarSidebar = ({ items, open, onOpenChange }: Props) => {
           <div className="border-t">
             <Link
               href={"/sign-in"}
-              className="w-full text-left p-4 hover:bg-black hover:text-white flex item-center text-base font-medium"
+              className="w-full text-left p-4 hover:bg-black hover:text-white flex items-center text-base font-medium"
               onClick={() => onOpenChange(false)}
             >
               Log In
             </Link>
             <Link
               href={"/sign-up"}
-              className="w-full text-left p-4 hover:bg-black hover:text-white flex item-center text-base font-medium"
+              className="w-full text-left p-4 hover:bg-black hover:text-white flex items-center text-base font-medium"
               onClick={() => onOpenChange(false)}
             >
               Start Selling

@@ -23,15 +23,15 @@ interface NavbarItemProps {
 
 const NavbarItem = ({ href, children, isActive }: NavbarItemProps) => {
   return (
-    <Button
-      variant={"outline"}
+    <Link
+      href={href}
       className={cn(
-        "bg-transparent hover:bg-transparent rounded-full hover:border-primary border-transparent px-3.5 text-lg",
+        "inline-flex items-center justify-center rounded-full border border-transparent px-3.5 py-2 text-lg font-medium transition-colors hover:border-primary bg-transparent hover:bg-transparent",
         isActive && "bg-black text-white hover:bg-black hover:text-white"
       )}
     >
-      <Link href={href}>{children}</Link>
-    </Button>
+      {children}
+    </Link>
   );
 };
 
