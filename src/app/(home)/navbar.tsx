@@ -49,7 +49,7 @@ export const Navbar = () => {
 
   return (
     <nav className="h-20 flex border-b justify-between font-medium bg-white">
-      <Link href={"/"} className="p-6 item-center">
+      <Link href={"/"} className="p-6 items-center">
         <span className={cn("text-5xl font-semibold", poppins.className)}>
           Title
         </span>
