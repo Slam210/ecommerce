@@ -5,6 +5,14 @@ import * as ProgressPrimitive from "@radix-ui/react-progress";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Renders a customizable progress bar using Radix UI primitives.
+ *
+ * Displays a horizontal progress indicator whose fill corresponds to the provided `value` prop, supporting additional styling and props.
+ *
+ * @param value - The current progress value, typically between 0 and 100
+ * @returns A React element representing the progress bar
+ */
 function Progress({
   className,
   value,

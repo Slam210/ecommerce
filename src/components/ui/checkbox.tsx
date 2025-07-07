@@ -6,6 +6,11 @@ import { CheckIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Renders a styled checkbox component with support for custom classes and visual states.
+ *
+ * Combines Radix UI's checkbox primitive with custom styling and an indicator icon for the checked state.
+ */
 function Checkbox({
   className,
   ...props
