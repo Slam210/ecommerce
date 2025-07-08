@@ -18,6 +18,7 @@ export const GET = async () => {
        data: data.docs,
      })
    } catch (error) {
-     return Response.json({ error }, { status: 500 });
+     console.error('Error fetching categories:', error);
+     return Response.json({ error: 'Failed to fetch categories' }, { status: 500 });
    }
 }
