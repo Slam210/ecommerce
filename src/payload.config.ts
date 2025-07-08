@@ -14,6 +14,14 @@ import { Categories } from "./collections/Categories";
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
+if (!process.env.PAYLOAD_SECRET) {
+  throw new Error("PAYLOAD_SECRET env var is required");
+}
+
+if (!process.env.DATABASE_URI) {
+  throw new Error('DATABASE_URI env var is required');
+}
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -23,12 +31,13 @@ export default buildConfig({
   },
   collections: [Users, Media, Categories],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || "",
+
+  secret: process.env.PAYLOAD_SECRET,
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI || "",
+    url: process.env.DATABASE_URI,
   }),
   sharp,
   plugins: [
