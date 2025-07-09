@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Category } from "@/payload-types";
 import { useRef, useState } from "react";
-import { useDropdownPostition } from "./use-dropdown-position";
+import { useDropdownPosition } from "./use-dropdown-position";
 import { SubcatergoryMenu } from "./subcategory-menu";
 
 interface Props {
@@ -20,7 +20,7 @@ export const CategoryDropdown = ({
 }: Props) => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
-    const { getDropDownPosition } = useDropdownPostition(dropdownRef);
+    const { getDropDownPosition } = useDropdownPosition(dropdownRef);
 
     const onMouseEnter = () => {
         if(category.subcategories){
@@ -54,7 +54,7 @@ export const CategoryDropdown = ({
         {category.subcategories && category.subcategories.length > 0 && (
           <div
             className={cn(
-              "opacity-0 absolute -botton-3 w-0 h-0 border-l-[10px] border-r-[10px] border-b-[10px] border-l-transparent border-r-transparent border-b-black left-1/2 -traslate-x-1/2",
+              "opacity-0 absolute -botton-3 w-0 h-0 border-l-[10px] border-r-[10px] border-b-[10px] border-l-transparent border-r-transparent border-b-black left-1/2 -translate-x-1/2",
               isOpen && "opacity-100"
             )}
           />
