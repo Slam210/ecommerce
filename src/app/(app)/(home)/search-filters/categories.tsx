@@ -34,7 +34,7 @@ export const Categories = ({ data }: CategoriesProps) => {
       }
       const containerWidth = containerRef.current.offsetWidth;
       const viewAllWidth = viewAllRef.current.offsetWidth;
-      const availibleWidth = containerWidth - viewAllWidth;
+      const availableWidth = containerWidth - viewAllWidth;
 
       const items = Array.from(measureRef.current.children);
 
@@ -43,7 +43,7 @@ export const Categories = ({ data }: CategoriesProps) => {
       for (const item of items){
         const width = item.getBoundingClientRect().width;
 
-        if (totalWidth + width > availibleWidth){
+        if (totalWidth + width > availableWidth) {
           break;
         }
 

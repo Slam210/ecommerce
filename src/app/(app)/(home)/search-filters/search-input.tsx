@@ -20,7 +20,7 @@ export const SearchInput = ({disabled, data} : Props) => {
       <div className="flex items-center gap-2 w-full">
         <CategoriesSidebar data={data} open={isSidebarOpened} onOpenChange={setIsSidebarOpened}/>
         <div className="relative w-full">
-          <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-nuetral-500" />
+          <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-neutral-500" />
           <Input
             className="pl-8"
             placeholder="Search Products"
