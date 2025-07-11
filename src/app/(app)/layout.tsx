@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
+import { TRPCReactProvider } from "@/trpc/client";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -12,9 +13,9 @@ export const metadata: Metadata = {
 };
 
 /**
- * Provides the root HTML layout for all pages, applying global font and styles.
+ * Defines the root HTML layout for all pages, applying global font, styles, and tRPC context.
  *
- * Wraps page content with the DM Sans font and antialiasing, and sets the document language to English.
+ * Wraps page content with the DM Sans font, antialiasing, and the TRPCReactProvider, and sets the document language to English.
  *
  * @param children - The page content to render within the layout
  */
@@ -25,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans} antialiased`}>{children}</body>
+      <body className={`${dmSans} antialiased`}>
+        <TRPCReactProvider>{children}</TRPCReactProvider>
+      </body>
     </html>
   );
 }
