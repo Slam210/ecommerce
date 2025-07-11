@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 };
 
 /**
- * Provides the root HTML layout for all pages, applying global font and styles.
+ * Defines the root layout for all pages, applying global font, styles, and tRPC provider context.
  *
- * Wraps page content with the DM Sans font and antialiasing, and sets the document language to English.
+ * Wraps page content with the DM Sans font, antialiasing, and sets the document language to English. All children are rendered within a tRPC provider, enabling tRPC context throughout the app.
  *
- * @param children - The page content to render within the layout
+ * @param children - The content to render within the layout
  */
 export default function RootLayout({
   children,
