@@ -110,16 +110,16 @@ export const SignInView = () => {
                 </FormItem>
               )}
             />
+            <Button
+              type="submit"
+              size={"lg"}
+              variant={"elevated"}
+              className="bg-black text-white hover:bg-red-300 hover:text-primary"
+              disabled={login.isPending}
+            >
+              Log In
+            </Button>
           </form>
-          <Button
-            type="submit"
-            size={"lg"}
-            variant={"elevated"}
-            className="bg-black text-white hover:bg-red-300 hover:text-primary"
-            disabled={login.isPending}
-          >
-            Log In
-          </Button>
         </Form>
       </div>
       <div

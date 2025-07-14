@@ -13,7 +13,7 @@ export const registerSchema = z.object({
     )
     .refine(
       (val) => !val.includes("--"),
-      "Username cannot contain consecutive hypthens"
+      "Username cannot contain consecutive hyphens"
     )
     .transform((val) => val.toLowerCase()),
 });

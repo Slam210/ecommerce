@@ -136,16 +136,16 @@ export const SignUpView = () => {
                 </FormItem>
               )}
             />
+            <Button
+              type="submit"
+              size={"lg"}
+              variant={"elevated"}
+              className="bg-black text-white hover:bg-red-300 hover:text-primary"
+              disabled={register.isPending}
+            >
+              Create Account
+            </Button>
           </form>
-          <Button
-            type="submit"
-            size={"lg"}
-            variant={"elevated"}
-            className="bg-black text-white hover:bg-red-300 hover:text-primary"
-            disabled={register.isPending}
-          >
-            Create Account
-          </Button>
         </Form>
       </div>
       <div
