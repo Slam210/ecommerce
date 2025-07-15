@@ -19,7 +19,7 @@ if (!process.env.PAYLOAD_SECRET) {
 }
 
 if (!process.env.DATABASE_URI) {
-  throw new Error('DATABASE_URI env var is required');
+  throw new Error("DATABASE_URI env var is required");
 }
 
 export default buildConfig({
@@ -30,6 +30,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Categories],
+  // cookiePrefix: "ecommerce",
   editor: lexicalEditor(),
 
   secret: process.env.PAYLOAD_SECRET,

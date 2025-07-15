@@ -25,6 +25,7 @@ export const CategoriesSidebar = ({ open, onOpenChange }: Props) => {
 
   const [parentCategories, setParentCategories] =
     useState<CategoriesGetManyOutput | null>(null);
+
   const [selectedCategory, setSelectedCategory] = useState<
     CategoriesGetManyOutput[1] | null
   >(null);
@@ -39,7 +40,9 @@ export const CategoriesSidebar = ({ open, onOpenChange }: Props) => {
 
   const handleCategoryClick = (category: CategoriesGetManyOutput[1]) => {
     if (category.subcategories && category.subcategories.length > 0) {
-      setParentCategories(category.subcategories as CategoriesGetManyOutput);
+      setParentCategories(
+        category.subcategories as unknown as CategoriesGetManyOutput
+      );
       setSelectedCategory(category);
     } else {
       if (parentCategories && selectedCategory) {

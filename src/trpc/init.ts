@@ -2,17 +2,13 @@ import { initTRPC } from "@trpc/server";
 import { cache } from "react";
 import config from "@payload-config";
 import { getPayload } from "payload";
-import superjson from "superjson"
+import superjson from "superjson";
 
 export const createTRPCContext = cache(async () => {
   /**
    * @see: https://trpc.io/docs/server/context
    */
-  // TODO: Implement proper authentication
-  // Example with Next.js auth or session management:
-  // const session = await getServerSession();
-  // return { userId: session?.user?.id ?? null };
-  throw new Error("Authentication context not implemented");
+  return { userId: "user_123" };
 });
 // Avoid exporting the entire t-object
 // since it's not very descriptive.
