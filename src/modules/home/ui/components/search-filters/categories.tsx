@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { CategoryDropdown } from "./categories-dropdown";
 import { useEffect, useRef, useState } from "react";
@@ -7,12 +7,15 @@ import { cn } from "@/lib/utils";
 import { ListFilterIcon } from "lucide-react";
 import { CategoriesSidebar } from "./categories-sidebar";
 import { CategoriesGetManyOutput } from "@/modules/categories/types";
+import { useParams } from "next/navigation";
 
 interface CategoriesProps {
   data: CategoriesGetManyOutput;
 }
 
 export const Categories = ({ data }: CategoriesProps) => {
+  const params = useParams();
+  const categoryParam = params.category as string | undefined;
 
   const containerRef = useRef<HTMLDivElement>(null);
   const measureRef = useRef<HTMLDivElement>(null);
@@ -22,14 +25,17 @@ export const Categories = ({ data }: CategoriesProps) => {
   const [isAnyHovered, setIsAnyHovered] = useState(false);
   const [isSidebarOpened, setIsSidebarOpened] = useState(false);
 
-  const activeCategory = "all";
-  
-  const activeCategoryIndex = data.findIndex((cat) => cat.slug === activeCategory);
-  const isActiveCategoryHidden = activeCategoryIndex >= visibleCount && activeCategoryIndex !== -1;
+  const activeCategory = categoryParam || "all";
+
+  const activeCategoryIndex = data.findIndex(
+    (cat) => cat.slug === activeCategory
+  );
+  const isActiveCategoryHidden =
+    activeCategoryIndex >= visibleCount && activeCategoryIndex !== -1;
 
   useEffect(() => {
     const calculateVisible = () => {
-      if(!containerRef.current || !measureRef.current || !viewAllRef.current){
+      if (!containerRef.current || !measureRef.current || !viewAllRef.current) {
         return;
       }
       const containerWidth = containerRef.current.offsetWidth;
@@ -40,7 +46,7 @@ export const Categories = ({ data }: CategoriesProps) => {
 
       let totalWidth = 0;
       let visible = 0;
-      for (const item of items){
+      for (const item of items) {
         const width = item.getBoundingClientRect().width;
 
         if (totalWidth + width > availableWidth) {
@@ -51,18 +57,21 @@ export const Categories = ({ data }: CategoriesProps) => {
         visible++;
       }
 
-      setVisibleCount(visible)
-    }
+      setVisibleCount(visible);
+    };
 
     const resizeObserver = new ResizeObserver(calculateVisible);
-    resizeObserver.observe(containerRef.current!)
+    resizeObserver.observe(containerRef.current!);
 
     return () => resizeObserver.disconnect();
-  }, [data.length])
-    
+  }, [data.length]);
+
   return (
     <div className="relative w-full">
-      <CategoriesSidebar open={isSidebarOpened} onOpenChange={setIsSidebarOpened}/>
+      <CategoriesSidebar
+        open={isSidebarOpened}
+        onOpenChange={setIsSidebarOpened}
+      />
       <div
         className="absolute opacity-0 pointer-events-none flex"
         ref={measureRef}
