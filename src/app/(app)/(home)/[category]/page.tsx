@@ -6,7 +6,7 @@ interface Props {
 
 const Page = async ({ params }: Props) => {
   const { category } = await params;
-  <div>Category: ${category}</div>;
+  return <div>Category: {category}</div>;
 };
 
 export default Page;

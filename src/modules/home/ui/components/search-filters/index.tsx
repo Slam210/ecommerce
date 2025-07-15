@@ -13,7 +13,9 @@ export const SearchFilters = () => {
   const { data } = useSuspenseQuery(trpc.categories.getMany.queryOptions());
 
   const params = useParams();
-  const categoryParam = (params.category as string) || undefined;
+  const categoryParam = Array.isArray(params.category)
+    ? params.category[0]
+    : params.category;
   const activeCategory = categoryParam || "all";
 
   const activeCategoryData = data.find(
@@ -23,7 +25,9 @@ export const SearchFilters = () => {
   const activeCategoryColor = activeCategoryData?.color || DEFAULT_BG_COLOR;
   const activeCategoryName = activeCategoryData?.name || null;
 
-  const activeSubcategory = (params.subcategory as string) || undefined;
+  const activeSubcategory = Array.isArray(params.subcategory)
+    ? params.subcategory[0]
+    : params.subcategory;
   const activeSubcategoryName =
     activeCategoryData?.subcategories.find(
       (subcategory) => subcategory.slug === activeSubcategory
@@ -51,7 +55,7 @@ export const SearchFiltersLoading = () => {
   return (
     <div
       className="px-4 lg:px-12 py-8 border-b flex flex-col gap-4 w-full"
-      style={{ backgroundColor: "#F5F5F5" }}
+      style={{ backgroundColor: DEFAULT_BG_COLOR }}
     >
       <SearchInput disabled />
       <div className="hidden lg:block">

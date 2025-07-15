@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Navbar } from "@/modules/home/ui/components/navbar";
-import { Footer } from "@/modules/home/ui/components/fotter";
+import { Footer } from "@/modules/home/ui/components/footer";
 import {
   SearchFilters,
   SearchFiltersLoading,

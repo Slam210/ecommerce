@@ -7,9 +7,11 @@ interface Props {
 
 const Page = async ({ params }: Props) => {
   const { category, subcategory } = await params;
-  <div>
-    Category: ${category} <br /> Subcategory: ${subcategory}
-  </div>;
+  return (
+    <div>
+      Category: {category} <br /> Subcategory: {subcategory}
+    </div>
+  );
 };
 
 export default Page;
