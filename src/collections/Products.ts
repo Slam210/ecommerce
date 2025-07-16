@@ -1,5 +1,12 @@
 import type { CollectionConfig } from "payload";
 
+const validatePrice = (value: number | null | undefined) => {
+  if (value != null && value <= 0) {
+    return "Price must be greater than 0";
+  }
+  return true; // Payload requires `true` for valid
+};
+
 export const Products: CollectionConfig = {
   slug: "products",
   fields: [
@@ -16,6 +23,7 @@ export const Products: CollectionConfig = {
       name: "price",
       type: "number",
       required: true,
+      validate: validatePrice,
       admin: {
         description: "Price in USD",
       },

@@ -37,8 +37,12 @@ export const productsRouter = createTRPCRouter({
 
         const subCategories = [];
 
-        const parentCategory = formattedData[0];
+        if (formattedData.length === 0) {
+          // No matching category found, return empty results
+          return { docs: [], totalDocs: 0, hasNextPage: false };
+        }
 
+        const parentCategory = formattedData[0];
         if (parentCategory) {
           subCategories.push(
             ...parentCategory.subcategories.map(
@@ -46,6 +50,7 @@ export const productsRouter = createTRPCRouter({
             )
           );
         }
+
         where["category.slug"] = {
           in: [parentCategory.slug, ...subCategories],
         };
