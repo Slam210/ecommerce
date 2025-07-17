@@ -24,16 +24,14 @@ const Page = async ({ params }: Props) => {
     <HydrationBoundary state={dehydrate(queryClient)}>
       <div className="px-4 lg:px-12 py-8 flex flex-col gap-4">
         <div className="grid grid-cols-1 lg:grid-cols-6 xl:grid-cols-8 gap-y-6 gap-x-12">
-          <div className="border p-2">
-            <div className="lg:col-span-2 xl-col-span-2">
-              <ProductFilters />
-            </div>
-          </div>
-          <div className="lg:col-span-4 xl-col-span-6">
+          <aside className="lg:col-span-2 xl:col-span-2" aria-label="Product filters">
+            <ProductFilters />
+          </aside>
+          <main className="lg:col-span-4 xl:col-span-6">
             <Suspense fallback={<ProductListSkeleton />}>
               <ProductList category={category} />
             </Suspense>
-          </div>
+          </main>
         </div>
       </div>
     </HydrationBoundary>
