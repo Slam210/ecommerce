@@ -13,14 +13,14 @@ interface Props {
 export const formatAsCurrency = (value: string) => {
   const numericValue = value.replace(/[^0-9.]/g, "");
   const parts = numericValue.split(".");
-  const formatedValue =
+  const formattedValue =
     parts[0] + (parts.length > 1 ? "." + parts[1]?.slice(0, 2) : "");
 
-  if (!formatedValue) {
+  if (!formattedValue || formattedValue === ".") {
     return "";
   }
 
-  const numberValue = parseFloat(formatedValue);
+  const numberValue = parseFloat(formattedValue);
   if (isNaN(numberValue)) {
     return "";
   }
