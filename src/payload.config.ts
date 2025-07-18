@@ -11,6 +11,7 @@ import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
 import { Categories } from "./collections/Categories";
 import { Products } from "./collections/Products";
+import { Tags } from "./collections/Tag";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -30,7 +31,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Categories, Products],
+  collections: [Users, Media, Categories, Products, Tags],
   // cookiePrefix: "ecommerce",
   editor: lexicalEditor(),
 
