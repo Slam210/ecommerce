@@ -145,8 +145,11 @@ async function withRetry<T>(
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       return await fn();
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const error = err as Error & { name?: string; message?: string };
+      const isLockError =
+        error?.name === "MongoServerError" &&
+        error?.message?.includes("Unable to acquire IX lock");
       const isLockError =
         err?.name === "MongoServerError" &&
         err?.message?.includes("Unable to acquire IX lock");
