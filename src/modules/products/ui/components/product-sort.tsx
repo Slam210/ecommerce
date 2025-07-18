@@ -36,7 +36,7 @@ export const ProductSort = () => {
       <Button
         size="sm"
         className={cn(
-          "rounded-full,bg-white hover:bg-white",
+          "rounded-full bg-white hover:bg-white",
           filters.sort !== "hot_and_new" &&
             "bg-transparent border-transparent hover:border-border hover:bg-transparent"
         )}
