@@ -137,6 +137,17 @@ const categories = [
   },
 ];
 
+/**
+ * Executes an asynchronous function with retry logic for MongoDB IX lock acquisition errors.
+ *
+ * Retries the provided function up to the specified number of times, waiting an increasing delay between attempts if a lock error occurs. Throws the original error if it is not a lock error or if retries are exhausted.
+ *
+ * @param fn - The asynchronous function to execute
+ * @param retries - Maximum number of retry attempts (default: 5)
+ * @param delay - Base delay in milliseconds between retries (default: 100)
+ * @returns The resolved value from the asynchronous function if successful
+ * @throws The last encountered error if all retries fail or if a non-lock error occurs
+ */
 async function withRetry<T>(
   fn: () => Promise<T>,
   retries = 5,
