@@ -36,7 +36,7 @@ export const TagsFilter = ({ value, onChange }: TagsFilterProps) => {
   return (
     <div className="flex flex-col gap-y-2">
       {isLoading ? (
-        <div className="flex item-center justify-center p-4">
+        <div className="flex items-center justify-center p-4">
           <LoaderIcon className="size-4 animate-spin" />
         </div>
       ) : (
