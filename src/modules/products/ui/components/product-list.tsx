@@ -85,7 +85,7 @@ export const ProductListSkeleton = ({ narrowView }: Props) => {
     <div
       className={cn(
         "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 p-4",
-        narrowView && "lg:gridcol-2 xl:grid-cols-3 2xl:grid-cols-3"
+        narrowView && "lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3"
       )}
     >
       {Array.from({ length: DEFAULT_LIMIT }).map((_, i) => (
