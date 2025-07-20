@@ -24,12 +24,14 @@ export const ProductCard = ({
   reviewCount,
   price,
 }: ProductCardProps) => {
-  const handleUserClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
+import { generateTenantURL } from "@/lib/utils";
 
-    router.push(tenantSlug);
-  };
+const handleUserClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  router.push(generateTenantURL(tenantSlug));
+};
   return (
     <Link href={`/products/${id}`}>
       <div className="hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow border rounded-md bg-white overflow-hidden h-full flex flex-col">
