@@ -1,10 +1,23 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+/**
+ * Combines multiple class values into a single string, resolving Tailwind CSS class conflicts.
+ *
+ * Accepts any number of class values, conditionally joins them, and merges Tailwind CSS classes to ensure only the final variant of conflicting classes is included.
+ *
+ * @returns The merged class name string
+ */
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/**
+ * Generates a tenant-specific URL path using the provided tenant slug.
+ *
+ * @param tenantSlug - The unique identifier for the tenant
+ * @returns The URL path in the format `/tenants/{tenantSlug}`
+ */
 export function generateTenantURL(tenantSlug: string) {
   return `/tenants/${tenantSlug}`;
 }
