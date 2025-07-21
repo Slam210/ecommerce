@@ -125,8 +125,9 @@ export const ProductView = ({ productId, tenantSlug }: ProductViewProps) => {
                 <div className="grid grid-cols-[auto_1fr_auto] gap-3 mt-4">
                   {[5, 4, 3, 2, 1].map((stars) => (
                     <Fragment key={stars}>
-                      <div className="font-medium">
-                        {stars === 1 ? "star" : "stars"}
+<div className="font-medium">
+  {stars} {stars === 1 ? "star" : "stars"}
+</div>
                       </div>
                       <Progress value={5} className="h-[1lh]" />
                       <div className="font-medium">{0}%</div>
