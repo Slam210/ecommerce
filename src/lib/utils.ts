@@ -10,8 +10,14 @@ export function generateTenantURL(tenantSlug: string) {
 }
 
 export function formatCurrency(value: number | string) {
+  const numericValue = typeof value === 'number' ? value : parseFloat(value.toString());
+  
+  if (isNaN(numericValue)) {
+    throw new Error(`Invalid currency value: ${value}`);
+  }
+  
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
-  }).format(Number(value));
+  }).format(numericValue);
 }
