@@ -41,9 +41,9 @@ export const ProductView = ({ productId, tenantSlug }: ProductViewProps) => {
   );
 
   return (
-    <div className="px-4 lg:px-12 py-10">
-      <div className="border rounded-sm bg-white overflow-hidden">
-        <div className="relative aspect-[3.9] border-b">
+    <div className="px-4 lg:px-12 py-10 ">
+      <div className="border rounded-sm bg-white overflow-hidden ">
+        <div className="relative w-full h-32 sm:h-48 md:h-72 lg:h-96 border-b overflow-hidden">
           <Image
             src={data.image?.url || "/placeholder.png"}
             alt={data.name}

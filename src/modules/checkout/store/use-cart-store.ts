@@ -25,8 +25,8 @@ export const useCartStore = create<CartState>()(
             [tenantSlug]: {
               productIds: [
                 ...(state.tenantCarts[tenantSlug]?.productIds || []),
+                productId,
               ],
-              productId,
             },
           },
         })),
