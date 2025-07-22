@@ -18,10 +18,10 @@ export const productsRouter = createTRPCRouter({
         id: input.id,
         depth: 2,
       });
-+
-+      if (!product) {
-+        throw new Error(`Product with ID ${input.id} not found`);
-+      }
+
+      if (!product) {
+        throw new Error(`Product with ID ${input.id} not found`);
+      }
 
       return {
         ...product,
