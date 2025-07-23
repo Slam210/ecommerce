@@ -5,6 +5,13 @@ import config from "@payload-config";
 import { getPayload } from "payload";
 import { ExpandedLineItem } from "@/modules/checkout/types";
 
+/**
+ * Handles incoming Stripe webhook POST requests, verifying the event and processing permitted event types.
+ *
+ * For "checkout.session.completed" events, creates order records in Payload CMS for each purchased product, associating them with the user and session.
+ *
+ * Returns a 400 response if event verification fails, a 500 response if event handling fails, or a 200 response upon successful processing.
+ */
 export async function POST(req: Request) {
   let event: Stripe.Event;
 
