@@ -70,7 +70,7 @@ export const CheckoutView = ({ tenantSlug }: CheckoutViewProps) => {
             ))}
           </div>
         </div>
-        <div className="lg:grid-cols-3">
+        <div className="lg:col-span-3">
           <CheckoutSidebar
             total={data?.totalPrice || 0}
             onCheckout={() => {}}
