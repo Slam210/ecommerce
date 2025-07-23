@@ -53,7 +53,7 @@ export const CheckoutView = ({ tenantSlug }: CheckoutViewProps) => {
   return (
     <div className="lg:pt-16 pt-4 px-4 lg:px-12">
       <div className="grid grid-cols-1 lg:grid-cols-7 gap-4 lg:gap-16">
-        <div className="lg:grid-cols-4">
+        <div className="lg:col-span-4">
           <div className="border rounded-md overflow-hidden bg-white">
             {data?.docs.map((product, index) => (
               <CheckoutItem
