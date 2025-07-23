@@ -16,7 +16,7 @@ export const CheckoutSidebar = ({
   isPending,
 }: CheckoutSidebarProps) => {
   return (
-    <div className="border rouded-md overflow-hidden bg-white flex flex-col">
+    <div className="border rounded-md overflow-hidden bg-white flex flex-col">
       <div className="flex items-center justify-between border-b p-4">
         <h4 className="font-medium text-lg">Total</h4>
         <p className="font-medium text-lg">{formatCurrency(total)}</p>
