@@ -1,8 +1,6 @@
 import { StarIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { formatCurrency, generateTenantURL } from "@/lib/utils";
-import { useRouter } from "next/navigation";
 
 interface ProductCardProps {
   id: string;
@@ -12,7 +10,6 @@ interface ProductCardProps {
   tenantImageURL?: string | null;
   reviewRating: number;
   reviewCount: number;
-  price: number;
 }
 
 export const ProductCard = ({
@@ -23,18 +20,9 @@ export const ProductCard = ({
   tenantImageURL,
   reviewRating,
   reviewCount,
-  price,
 }: ProductCardProps) => {
-  const router = useRouter();
-
-  const handleUserClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    router.push(generateTenantURL(tenantSlug));
-  };
   return (
-    <Link href={`${generateTenantURL(tenantSlug)}/products/${id}`}>
+    <Link href={`/library/${id}`}>
       <div className="hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow border rounded-md bg-white overflow-hidden h-full flex flex-col">
         {" "}
         <div className="relative aspect-square">
@@ -51,7 +39,6 @@ export const ProductCard = ({
           <div
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
             aria-label={`View ${tenantSlug}'s shop`}
-            onClick={handleUserClick}
           >
             {tenantImageURL && (
               <Image
@@ -72,11 +59,6 @@ export const ProductCard = ({
               </p>
             </div>
           )}
-        </div>
-        <div className="p-4">
-          <div className="relative px-2 py-1 border bg-red-400 w-fit">
-            <p className="text-sm font-medium">{formatCurrency(price)}</p>
-          </div>
         </div>
       </div>
     </Link>
