@@ -9,7 +9,7 @@ import { generateTenantURL } from "@/lib/utils";
 import { CheckoutItem } from "../components/checkout-item";
 import { CheckoutSidebar } from "../components/checkout-sidebar";
 import { InboxIcon, LoaderIcon } from "lucide-react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useCheckoutStates } from "../../hooks/use-checkout-states";
 
 interface CheckoutViewProps {
