@@ -53,7 +53,7 @@ export const reviewsRouter = createTRPCRouter({
     .input(
       z.object({
         productId: z.string(),
-        rating: z.number().min(1, { message: "Ratiing is required" }).max(5),
+        rating: z.number().min(1, { message: "Rating is required" }).max(5),
         description: z.string().min(1, { message: "Description is requried" }),
       })
     )
@@ -106,7 +106,7 @@ export const reviewsRouter = createTRPCRouter({
     .input(
       z.object({
         reviewId: z.string(),
-        rating: z.number().min(1, { message: "Ratiing is required" }).max(5),
+        rating: z.number().min(1, { message: "Rating is required" }).max(5),
         description: z.string().min(1, { message: "Description is requried" }),
       })
     )

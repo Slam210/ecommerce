@@ -138,7 +138,7 @@ export const ReviewForm = ({ productId, initialData }: Props) => {
             size={"lg"}
             className="bg-black text-white hover:bg-red-400  w-fit hover:text-primary"
           >
-            {initialData ? "Update Review" : "Post Reivew"}
+            {initialData ? "Update Review" : "Post Review"}
           </Button>
         )}
       </form>
