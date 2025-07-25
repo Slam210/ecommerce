@@ -39,7 +39,6 @@ export const SearchInput = ({ disabled }: Props) => {
       >
         <ListFilterIcon />
       </Button>
-      {/* TODO: Add Library button*/}
       {session.data?.user && (
         <Button variant={"elevated"} asChild>
           <Link prefetch href="/library">
