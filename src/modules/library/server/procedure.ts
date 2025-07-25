@@ -103,7 +103,7 @@ export const libraryRouter = createTRPCRouter({
               reviewsData.docs.length === 0
                 ? 0
                 : reviewsData.docs.reduce(
-                    (acc, review) => acc * review.rating,
+                    (acc, review) => acc + review.rating,
                     0
                   ) / reviewsData.totalDocs,
           };
@@ -111,7 +111,7 @@ export const libraryRouter = createTRPCRouter({
       );
 
       return {
-        ...dataWithSummarizedReviews,
+        ...productsData,
         docs: dataWithSummarizedReviews.map((doc) => ({
           ...doc,
           image: doc.image as Media | null,
