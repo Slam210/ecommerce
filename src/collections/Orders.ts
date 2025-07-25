@@ -4,7 +4,13 @@ import { CollectionConfig } from "payload";
 export const Orders: CollectionConfig = {
   slug: "orders",
   access: {
-    read: ({ req }) => isSuperAdmin(req.user),
+    read: ({ req }) => {
+      if (isSuperAdmin(req.user)) return true;
+      if (req.user) {
+        return { user: { equals: req.user.id } };
+      }
+      return false;
+    },
     create: ({ req }) => isSuperAdmin(req.user),
     update: ({ req }) => isSuperAdmin(req.user),
     delete: ({ req }) => isSuperAdmin(req.user),
