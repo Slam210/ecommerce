@@ -1,7 +1,12 @@
 import { getPayload } from "payload";
 import config from "@payload-config";
+import { stripe } from "./lib/stripe";
 
 const categories = [
+  {
+    name: "All",
+    slug: "all",
+  },
   {
     name: "Business & Money",
     color: "#FFB347",
@@ -133,33 +138,96 @@ const categories = [
   },
 ];
 
-const seed = async () => {
+async function withRetry<T>(
+  fn: () => Promise<T>,
+  retries = 5,
+  delay = 100
+): Promise<T> {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      return await fn();
+    } catch (err: unknown) {
+      const error = err as Error & { name?: string; message?: string };
+      const isLockError =
+        error?.name === "MongoServerError" &&
+        error?.message?.includes("Unable to acquire IX lock");
+      if (isLockError && attempt < retries) {
+        console.warn(`Lock error. Retrying attempt ${attempt}...`);
+        await new Promise((res) => setTimeout(res, delay * attempt));
+      } else {
+        throw err;
+      }
+    }
+  }
+
+  throw new Error("Operation failed after retries.");
+}
+
+const seed = async (): Promise<void> => {
   try {
     const payload = await getPayload({ config });
 
-    for (const category of categories) {
-      const parentCategory = await payload.create({
-        collection: "categories",
-        data: {
-          name: category.name,
-          slug: category.slug,
-          color: category.color,
-          parent: null,
-        },
-      });
+    const account = await stripe.accounts.create({});
 
-      for (const subCategory of category.subcategories || []) {
-        await payload.create({
+    // Admin tentant user create
+    const adminTenant = await withRetry(() =>
+      payload.create({
+        collection: "tenants",
+        data: {
+          name: "admin",
+          slug: "admin",
+          stripeAccountId: account.id,
+        },
+      })
+    );
+
+    // Admin user creation
+    await withRetry(() =>
+      payload.create({
+        collection: "users",
+        data: {
+          email: "admin@demo.com",
+          password: "demo",
+          roles: ["super-admin"],
+          username: "admin",
+          tenants: [
+            {
+              tenant: adminTenant.id,
+            },
+          ],
+        },
+      })
+    );
+
+    for (const category of categories) {
+      const parentCategory = await withRetry(() =>
+        payload.create({
           collection: "categories",
           data: {
-            name: subCategory.name,
-            slug: subCategory.slug,
-            parent: parentCategory.id,
+            name: category.name,
+            slug: category.slug,
+            color: category.color,
+            parent: null,
           },
-        });
+        })
+      );
+
+      for (const subCategory of category.subcategories || []) {
+        await withRetry(() =>
+          payload.create({
+            collection: "categories",
+            data: {
+              name: subCategory.name,
+              slug: subCategory.slug,
+              parent: parentCategory.id,
+            },
+          })
+        );
       }
     }
+
     console.log("Seeding completed successfully");
+    process.exit(0);
   } catch (error) {
     console.error("Seeding failed:", error);
     process.exit(1);
