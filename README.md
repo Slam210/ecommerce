@@ -1,4 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 Multi-Vendor E-Commerce Platform
+
+A full-stack **Multi-Vendor E-Commerce Platform** built with the latest tools in modern web development: **Next.js 15**, **React**, **tRPC**, **Stripe Connect**, **Payload CMS**, and **MongoDB**. Each creator gets their own branded storefront and can sell digital products directly to users. Platform fees are automatically managed, and users can build a personal library of purchases.
+
+Live deployment powered by **Vercel**.
+
+---
+
+## 🚀 Tech Stack
+
+- **Frontend**: Next.js 15, React, TailwindCSS v4, ShadcnUI
+- **Backend**: tRPC, Payload CMS (MongoDB)
+- **Payments**: Stripe Connect (OAuth + automatic fee split)
+- **Deployment**: Vercel
+- **Database**: MongoDB (via Mongoose adapter)
+
+---
+
+## Key Features
+
+### Multi-Tenant Functionality
+
+- Creators get isolated environments under their own **subdomains**.
+- Each vendor has a **custom storefront** to sell digital goods.
+
+### Payments & Monetization
+
+- Integrated with **Stripe Connect** for secure vendor payouts.
+- **Automatic platform fees** deducted on each transaction.
+
+### Storefront & Buyer Experience
+
+- Digital product purchases delivered instantly.
+- **User library** of owned products.
+- **Ratings and reviews** for products.
+- **Category filtering** and **search** support.
+- Secure file delivery and **image upload support**.
+
+### 🧑Admin & Vendor Tools
+
+- **Role-based access control** (RBAC) system.
+- **Admin dashboard** to manage users, content, and payouts.
+- **Merchant dashboard** to manage products, sales, and storefront settings.
+
+---
+
+## Architecture Overview
+
+- **Frontend**: All user and admin views built in Next.js using server components and client hydration where needed.
+- **Payload CMS**: Handles all content and product data with custom access control and media privacy settings.
+- **tRPC**: Handles API communication in a fully type-safe manner.
+- **Stripe**: Manages vendor onboarding, customer checkout, and payment splits.
+
+---
+
+## 📦 Project Highlights
+
+| Feature                 | Description                                |
+| ----------------------- | ------------------------------------------ |
+| Subdomain Routing       | Each merchant lives on their own subdomain |
+| Digital Product Support | Secure delivery of files after payment     |
+| Reviews                 | Buyers can rate and review products        |
+| Dashboards              | Separate dashboards for admins and vendors |
+| Media Upload            | Vendors can upload product images securely |
+| Search & Filters        | Easy navigation of product catalog         |
+
+---
+
+## Folder Structure
+
+````txt
+/apps
+  /web            # Frontend app (Next.js)
+  /cms            # Payload CMS backend
+
+/packages
+  /ui             # Shared UI components (Shadcn + Tailwind)
+  /trpc           # Shared tRPC definitions and logic
 
 ## Getting Started
 
@@ -12,26 +89,67 @@ yarn dev
 pnpm dev
 # or
 bun dev
+````
+
+Open [http://localhost:3000](http://localhost:3000)
+
+# 🌐 Wildcard Subdomain Routing Setup
+
+Configure wildcard subdomain routing for your application using Vercel and custom domains.
+
+---
+
+## Steps
+
+### 1. Purchase a Domain
+
+Buy a custom domain from a domain provider (e.g., Namecheap, GoDaddy).
+
+---
+
+### 2. Add Domain to Vercel (Twice)
+
+Go to your Vercel project dashboard:
+
+- Add your base domain (e.g., `example.com`)
+- Add the wildcard version: `*.example.com`
+
+---
+
+### 3. Edit for Wildcard Subdomain
+
+Make sure one of the entries contains the wildcard:
+
+```
+*.example.com
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Enable Subdomain Routing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Set an environment variable to allow routing based on subdomains.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### 5. Update Stripe Webhook URL
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Point your Stripe webhook to the new subdomain-aware endpoint:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### 6. Redeploy the Project
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Push changes and trigger a new deployment on Vercel.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# ecommerce
+---
+
+## Future Improvements
+
+- **Email Notifications**: Automate purchase confirmations, payout alerts, and admin notifications.
+- **End-to-End Testing**: Add comprehensive automated tests to ensure platform stability.
+- **In-app Messaging**: Facilitate direct communication between vendors and customers.
+- **Internationalization**: Add multi-language and multi-currency support to reach a global audience.
+- **Private Media**: Enable media to become privated to the tenant.
+- **Repurchasing**: Enable users to repurchase products.
+- **Shopping Cart**: Enable multi-shop carts with the addition of a buy later section.
