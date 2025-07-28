@@ -5,6 +5,8 @@ import { getQueryClient, trpc } from "@/trpc/server";
 import { DEFAULT_LIMIT } from "@/constants";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 
+export const dynamic = "force-dynamic";
+
 interface Props {
   searchParams: Promise<SearchParams>;
   params: Promise<{ slug: string }>;
