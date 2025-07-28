@@ -12,6 +12,7 @@ import Link from "next/link";
 import { Fragment, useState } from "react";
 import dynamic from "next/dynamic";
 import { toast } from "sonner";
+import { RichText } from "@payloadcms/richtext-lexical/react";
 
 // import { CartButton } from "../components/cart-button";
 const CartButton = dynamic(
@@ -109,7 +110,7 @@ export const ProductView = ({ productId, tenantSlug }: ProductViewProps) => {
             </div>
             <div className="p-6">
               {data.description ? (
-                <p>{data.description}</p>
+                <RichText data={data.description} />
               ) : (
                 <p className="font-medium italic text-muted-foreground">
                   No description provided
@@ -172,6 +173,87 @@ export const ProductView = ({ productId, tenantSlug }: ProductViewProps) => {
                         {data.ratingDistribution[stars]}%
                       </div>
                     </Fragment>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const ProductViewSkeleton = () => {
+  return (
+    <div className="px-4 lg:px-12 py-10 animate-pulse">
+      <div className="border rounded-sm bg-white overflow-hidden">
+        {/* Image Placeholder */}
+        <div className="relative w-full h-32 sm:h-48 md:h-72 lg:h-96 border-b overflow-hidden bg-gray-200" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-6">
+          {/* Left Side */}
+          <div className="col-span-4">
+            <div className="p-6">
+              <div className="h-10 w-3/4 bg-gray-200 rounded" />
+            </div>
+
+            {/* Info Bar */}
+            <div className="border-y flex">
+              <div className="px-6 py-4 flex items-center justify-center border-r">
+                <div className="px-4 py-2 w-20 bg-gray-200 rounded" />
+              </div>
+              <div className="px-6 py-4 flex items-center justify-between lg:border-r w-full">
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 rounded-full bg-gray-200" />
+                  <div className="h-4 w-24 bg-gray-200 rounded" />
+                </div>
+              </div>
+              <div className="hidden lg:flex px-6 py-4 items-center justify-center w-full">
+                <div className="flex items-center gap-2">
+                  <div className="w-20 h-4 bg-gray-200 rounded" />
+                </div>
+              </div>
+              <div className="block lg:hidden px-6 py-4 border-b">
+                <div className="flex items-center gap-2">
+                  <div className="w-20 h-4 bg-gray-200 rounded" />
+                </div>
+                <div className="h-4 w-24 mt-2 bg-gray-200 rounded" />
+              </div>
+            </div>
+
+            {/* Description */}
+            <div className="p-6">
+              <div className="h-4 w-full bg-gray-200 rounded mb-2" />
+              <div className="h-4 w-5/6 bg-gray-200 rounded mb-2" />
+              <div className="h-4 w-4/6 bg-gray-200 rounded" />
+            </div>
+          </div>
+
+          {/* Right Side */}
+          <div className="col-span-2">
+            <div className="border-t lg:border-t-0 lg:border-l h-full">
+              <div className="flex flex-col gap-4 p-6 border-b">
+                <div className="flex flex-row items-center gap-2">
+                  <div className="h-12 w-24 bg-gray-200 rounded" />
+                  <div className="h-12 w-12 bg-gray-200 rounded" />
+                </div>
+                <div className="h-4 w-3/4 bg-gray-200 rounded mx-auto" />
+              </div>
+
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="h-6 w-24 bg-gray-200 rounded" />
+                  <div className="h-4 w-24 bg-gray-200 rounded" />
+                </div>
+
+                <div className="grid grid-cols-[auto_1fr_auto] gap-3 mt-4">
+                  {[5, 4, 3, 2, 1].map((stars) => (
+                    <div key={stars} className="contents">
+                      <div className="h-4 w-12 bg-gray-200 rounded" />
+                      <div className="h-4 bg-gray-200 rounded w-full" />
+                      <div className="h-4 w-8 bg-gray-200 rounded" />
+                    </div>
                   ))}
                 </div>
               </div>
