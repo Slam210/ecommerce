@@ -156,3 +156,27 @@ export const ReviewForm = ({ productId, initialData }: Props) => {
     </Form>
   );
 };
+
+export const ReviewFormSkeleton = () => {
+  return (
+    <div className="flex flex-col gap-y-4 animate-pulse">
+      <p className="h-5 w-48 bg-gray-200 rounded" />
+
+      {/* Star rating skeleton */}
+      <div className="flex items-center gap-2">
+        {Array.from({ length: 5 }).map((_, idx) => (
+          <div key={idx} className="w-6 h-6 bg-gray-200 rounded" />
+        ))}
+      </div>
+
+      {/* Textarea skeleton */}
+      <div className="w-full h-24 bg-gray-200 rounded" />
+
+      {/* Submit Button skeleton */}
+      <div className="h-10 w-32 bg-gray-200 rounded" />
+
+      {/* Edit Button skeleton (optional preview state) */}
+      <div className="h-10 w-20 bg-gray-200 rounded mt-4" />
+    </div>
+  );
+};
