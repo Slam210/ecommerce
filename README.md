@@ -6,7 +6,7 @@ Live deployment powered by **Vercel**.
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Frontend**: Next.js 15, React, TailwindCSS v4, ShadcnUI
 - **Backend**: tRPC, Payload CMS (MongoDB)
@@ -36,7 +36,7 @@ Live deployment powered by **Vercel**.
 - **Category filtering** and **search** support.
 - Secure file delivery and **image upload support**.
 
-### 🧑Admin & Vendor Tools
+### Admin & Vendor Tools
 
 - **Role-based access control** (RBAC) system.
 - **Admin dashboard** to manage users, content, and payouts.
@@ -53,7 +53,7 @@ Live deployment powered by **Vercel**.
 
 ---
 
-## 📦 Project Highlights
+## Project Highlights
 
 | Feature                 | Description                                |
 | ----------------------- | ------------------------------------------ |
@@ -65,31 +65,6 @@ Live deployment powered by **Vercel**.
 | Search & Filters        | Easy navigation of product catalog         |
 
 ---
-
-## Folder Structure
-
-````txt
-/apps
-  /web            # Frontend app (Next.js)
-  /cms            # Payload CMS backend
-
-/packages
-  /ui             # Shared UI components (Shadcn + Tailwind)
-  /trpc           # Shared tRPC definitions and logic
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-````
 
 Open [http://localhost:3000](http://localhost:3000)
 
