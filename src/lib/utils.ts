@@ -19,16 +19,23 @@ export function cn(...inputs: ClassValue[]) {
  * @returns The URL path in the format `/tenants/{tenantSlug}`
  */
 export function generateTenantURL(tenantSlug: string) {
-  return `/tenants/${tenantSlug}`;
+  if (process.env.NODE_ENV === "development") {
+    return `${process.env.NEXT_PUBLIC_APP_URL}/tenants/${tenantSlug}`;
+  }
+  const protocol = "https";
+  const domain = process.env.NEXT_PUBLIC_ROOT_DOMAIN!;
+
+  return `${protocol}://${tenantSlug}.${domain}`;
 }
 
 export function formatCurrency(value: number | string) {
-  const numericValue = typeof value === 'number' ? value : parseFloat(value.toString());
-  
+  const numericValue =
+    typeof value === "number" ? value : parseFloat(value.toString());
+
   if (isNaN(numericValue)) {
     throw new Error(`Invalid currency value: ${value}`);
   }
-  
+
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
