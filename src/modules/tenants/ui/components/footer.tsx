@@ -15,7 +15,7 @@ export const Footer = () => {
         <p>Powered By</p>
         <Link href={process.env.NEXT_PUBLIC_APP_URL!}>
           <span className={cn("text-2xl font-semibold", poppins.className)}>
-            Ecommerce
+            Vendora
           </span>
         </Link>
       </div>

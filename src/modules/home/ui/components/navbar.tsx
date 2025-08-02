@@ -56,7 +56,7 @@ export const Navbar = () => {
     <nav className="h-20 flex border-b justify-between font-medium bg-white">
       <Link href={"/"} className="p-6 items-center">
         <span className={cn("text-5xl font-semibold", poppins.className)}>
-          Ecommerce
+          Vendora
         </span>
       </Link>
       <NavbarSidebar

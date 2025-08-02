@@ -51,7 +51,7 @@ export default buildConfig({
     Orders,
     Reviews,
   ],
-  // cookiePrefix: "ecommerce",
+  // cookiePrefix: "vendora",
   editor: lexicalEditor(),
 
   secret: process.env.PAYLOAD_SECRET,

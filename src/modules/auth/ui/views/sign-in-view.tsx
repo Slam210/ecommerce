@@ -85,7 +85,7 @@ export const SignInView = () => {
                 <span
                   className={cn("text-2xl font-semibold", poppins.className)}
                 >
-                  Ecommerce
+                  Vendora
                 </span>
               </Link>
               <Button

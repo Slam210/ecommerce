@@ -53,7 +53,7 @@ export const useCartStore = create<CartState>()(
       clearAllCarts: () => set(() => ({ tenantCarts: {} })),
     }),
     {
-      name: "ecommerce-cart",
+      name: "vendora-cart",
       storage: createJSONStorage(() => localStorage),
     }
   )
